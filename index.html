@@ -1,10 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Welcome To Sean Website Cookies Test</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script>
+        function setCookie(sname, svalue, sdays) {
+            document.cookie = sname + "=" + svalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(name) {
+            let cname = name + "=";
+            let code = decodeURIComponent(document.cookie);
+            let Cook = code.split(';');
+            for (let i = 0; i < Cook.length; i++) {
+                let c = Cook[i].trim();
+                if (c.indexOf(cname) === 0) {
+                    return c.substring(cname.length);
+                }
+            }
+            return "";
+        }
+        function chCookiee(){
+            let user = getCookie("user");
+            if (user != ""){
+                alert("Welcome back "+ user +" to my Cookie test site!");
+            } else {
+                user = prompt("Enter your name plz ->:");
+                if (user != "" && user != null){
+                    setCookie("user", user);
+                }
+            }
+        }
+    </script>
 </head>
-<body>
-$END$
+<body onload="chCookiee()">
+<h1>Cookies Test Website</h1>
+<p>This website will test cookies so that it remembers the client</p>
 </body>
+<footer>
+    <p>&copy; Sean Romero 2025 , HW10 due 11/20/25</p>
+</footer>
 </html>
+
