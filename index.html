@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="styles/main.css">
     <script>
         function setCookie(sname, svalue, sdays) {
+            let d = new Date();
+            d.setTime(d.getTime() + (sdays * 24 * 60 * 60 * 1000));
+            let expires = "expires" +d.toUTCString();
             document.cookie = sname + "=" + svalue + ";" + expires + ";path=/";
         }
 
@@ -28,7 +31,7 @@
             } else {
                 user = prompt("Enter your name plz ->:");
                 if (user != "" && user != null){
-                    setCookie("user", user);
+                    setCookie("user", user, 1);
                 }
             }
         }
